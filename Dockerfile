@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:16.04
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update -qq && apt-get install -y nfs-kernel-server runit inotify-tools -qq
 RUN mkdir -p /exports
@@ -8,8 +8,6 @@ ADD nfs.init /etc/sv/nfs/run
 ADD nfs.stop /etc/sv/nfs/finish
 
 ADD nfs_setup.sh /usr/local/bin/nfs_setup
-
-VOLUME /exports
 
 EXPOSE 111/udp 2049/tcp
 
