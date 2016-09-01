@@ -1,6 +1,10 @@
 #!/bin/bash
 
 set -e
+FILE="setup_completed"
+
+if [ ! -f "$FILE" ]
+then
 declare -a hosts=('*');
 if [ -n "$ALLOWED_HOSTS" ];
 	then 
@@ -22,5 +26,6 @@ for mnt in "${mounts[@]}"; do
   done
   echo "" >> /etc/exports
 done
-
+echo "yes" >> setup_completed
+fi
 exec runsvdir /etc/sv
