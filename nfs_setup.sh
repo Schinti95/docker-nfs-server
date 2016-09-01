@@ -18,7 +18,7 @@ for mnt in "${mounts[@]}"; do
   src=$(echo $mnt | awk -F':' '{ print $1 }')
   echo -n "$src " >> /etc/exports
   for host in "${hosts[@]}"; do
-    echo -n "$host(rw,sync,no_subtree_check,fsid=0,no_root_squash)" >> /etc/exports
+    echo -n " $host(rw,sync,no_subtree_check,fsid=0,no_root_squash)" >> /etc/exports
   done
   echo "" >> /etc/exports
 done
